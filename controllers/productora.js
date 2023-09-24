@@ -26,7 +26,7 @@ const createProductora = async (req = request, res = response) => {
 const getProductora = async (req = request, res = response) => {
     try{
         const { estado } = req.query
-        const productora = await Productora.find({estado})//select * from clientes
+        const productora = await Productora.find({estado})//select * from productora
         return res.json(productora)
     }catch(error){
         console.log(error)

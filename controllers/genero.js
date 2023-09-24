@@ -30,8 +30,8 @@ const createGenero = async (req = request, res = response) => {
 const getGenero = async (req = request, res = response) => {
         try{
         const { estado } = req.query
-        const generoDB = await Genero.find({estado})//select * from clientes
-        return res.status(500).json(generoDB)
+        const genero = await Genero.find({estado})//select * from genero
+        return res.json(genero)
         }catch(error){
             console.log(error)
             return res.status(500).json({msj: error})

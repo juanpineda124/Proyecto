@@ -56,7 +56,7 @@ const createMedia= async (req = request, res = response) => {
 //listar todos
 const getMedia = async (req = request, res = response) => {
         try{
-            const mediaDB = await Media.find()//select * from inventarios
+            const mediaDB = await Media.find()//select * from media
                 .populate({
                     path: 'genero'
                 })

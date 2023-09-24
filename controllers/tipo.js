@@ -23,14 +23,14 @@ const createTipo = async (req = request, res = response) => {
 
 //listar
 const getTipo = async (req = request, res = response) => {
-        try{
-            const { estado } = req.query
-            const tipo = await Tipo.find({estado})//select * from clientes
-            return res.json(tipo)
-        }catch(error){
-            console.log(error)
-            return res.status(500).json({msj: error}) 
-        }
+    try{
+        const { estado } = req.query
+        const tipo = await Tipo.find({estado})//select * from tipo
+        return res.json(tipo)
+    }catch(error){
+         console.log(error)
+        return res.status(500).json({msj: error}) 
+     }
 }
 
 // actualizar

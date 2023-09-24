@@ -26,14 +26,14 @@ const createDirector = async (req = request, res = response) => {
 
 //listar
 const getDirector = async (req = request, res = response) => {
-        try{
-            const { estado } = req.query
-            const director = await Director.find({estado})//select * from clientes
-            return res.json(director)
-        }catch(error){
-            console.log(error)
-            return res.status(500).json({msj: error})
-            }
+    try{
+        const { estado } = req.query
+        const director = await Director.find({estado})//select * from director
+        return res.json(director)
+    }catch(error){
+         console.log(error)
+        return res.status(500).json({msj: error}) 
+     }
 }
 
 // actualizar
