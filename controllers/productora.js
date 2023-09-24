@@ -1,4 +1,3 @@
-const productora = require('../models/productora')
 const Productora = require('../models/productora')
 const { request, response} = require('express')
 
@@ -25,15 +24,14 @@ const createProductora = async (req = request, res = response) => {
 
 //listar
 const getProductora = async (req = request, res = response) => {
-        try{
-            const { estado } = req.query
-            const productora = await Productora.find({estado})//select * from clientes
-            return res.json(productora)
-        }catch(e){
-            return res.status(500).json({
-                msg: 'Error general ' + e
-            })
-        }
+    try{
+        const { estado } = req.query
+        const productora = await Productora.find({estado})//select * from clientes
+        return res.json(productora)
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({msj: error}) 
+    }
 }
 
 // actualizar
@@ -43,13 +41,13 @@ const updateProductoraByID = async (req = request, res = response) => {
         console.log(req.params)
         const datos = req.body
         const id = req.params.id
-        data.fechaActualizacion = new Date()
+        datos.fechaActualizacion = new Date()
         console.log(datos)
-        const director = await Director.findByIdAndUpdate(id, datos, {new: true})
+        const productora = await Productora.findByIdAndUpdate(id, datos, {new: true})
         return res.json(productora)
-    }catch(e){
-        console.log(e)
-        return res.status(500).json({msg: e})  
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({msj: error})   
     }
 }
 

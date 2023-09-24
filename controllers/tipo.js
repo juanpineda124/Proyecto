@@ -27,10 +27,9 @@ const getTipo = async (req = request, res = response) => {
             const { estado } = req.query
             const tipo = await Tipo.find({estado})//select * from clientes
             return res.json(tipo)
-        }catch(e){
-            return res.status(500).json({
-                msg: 'Error general ' + e
-            })
+        }catch(error){
+            console.log(error)
+            return res.status(500).json({msj: error}) 
         }
 }
 
@@ -41,13 +40,13 @@ const updateTipoByID = async (req = request, res = response) => {
         console.log(req.params)
         const datos = req.body
         const id = req.params.id
-        data.fechaActualizacion = new Date()
+        datos.fechaActualizacion = new Date()
         console.log(datos)
         const tipo = await Tipo.findByIdAndUpdate(id, datos, {new: true})
         return res.json(tipo)
-    }catch(e){
-        console.log(e)
-        return res.status(500).json({msg: e})  
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({msj: error}) 
     }
 }
 
