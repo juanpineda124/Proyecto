@@ -27,8 +27,7 @@ const createDirector = async (req = request, res = response) => {
 //listar
 const getDirector = async (req = request, res = response) => {
     try{
-        const { estado } = req.query
-        const director = await Director.find({estado})//select * from director
+        const director = await Director.find()//select * from director
         return res.json(director)
     }catch(error){
          console.log(error)
@@ -43,7 +42,7 @@ const updateDirectorByID = async (req = request, res = response) => {
         console.log(req.params)
         const datos = req.body
         const id = req.params.id
-        datos.fechaActualizacion = new Date()
+        datos.fechaModificacion = new Date()
         console.log(datos)
         const director = await Director.findByIdAndUpdate(id, datos, {new: true})
         return res.json(director)

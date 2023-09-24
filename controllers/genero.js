@@ -29,8 +29,7 @@ const createGenero = async (req = request, res = response) => {
 //listar
 const getGenero = async (req = request, res = response) => {
         try{
-        const { estado } = req.query
-        const genero = await Genero.find({estado})//select * from genero
+        const genero = await Genero.find()//select * from genero
         return res.json(genero)
         }catch(error){
             console.log(error)
@@ -45,7 +44,7 @@ const updateGeneroByID = async (req = request, res = response) => {
         console.log(req.params)
         const datos = req.body
         const id = req.params.id
-        datos.fechaActualizacion = new Date()
+        datos.fechaModificacion = new Date()
         const genero = await Genero.findByIdAndUpdate(id, datos, {new: true})
         console.log(datos)
         return res.json(genero)

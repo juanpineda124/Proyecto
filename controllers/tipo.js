@@ -24,8 +24,7 @@ const createTipo = async (req = request, res = response) => {
 //listar
 const getTipo = async (req = request, res = response) => {
     try{
-        const { estado } = req.query
-        const tipo = await Tipo.find({estado})//select * from tipo
+        const tipo = await Tipo.find()//select * from tipo
         return res.json(tipo)
     }catch(error){
          console.log(error)
@@ -40,7 +39,7 @@ const updateTipoByID = async (req = request, res = response) => {
         console.log(req.params)
         const datos = req.body
         const id = req.params.id
-        datos.fechaActualizacion = new Date()
+        datos.fechaModificacion = new Date()
         console.log(datos)
         const tipo = await Tipo.findByIdAndUpdate(id, datos, {new: true})
         return res.json(tipo)

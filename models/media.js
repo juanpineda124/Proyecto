@@ -17,7 +17,6 @@ const MediaSchema = Schema({
     url: {
         type: String,
         required: [true, 'URL requerido'],
-        unique: [true, 'URL ya existe']
     },
     imagen: {
         type: String,

@@ -25,8 +25,7 @@ const createProductora = async (req = request, res = response) => {
 //listar
 const getProductora = async (req = request, res = response) => {
     try{
-        const { estado } = req.query
-        const productora = await Productora.find({estado})//select * from productora
+        const productora = await Productora.find()//select * from productora
         return res.json(productora)
     }catch(error){
         console.log(error)
@@ -41,7 +40,7 @@ const updateProductoraByID = async (req = request, res = response) => {
         console.log(req.params)
         const datos = req.body
         const id = req.params.id
-        datos.fechaActualizacion = new Date()
+        datos.fechaModificacion = new Date()
         console.log(datos)
         const productora = await Productora.findByIdAndUpdate(id, datos, {new: true})
         return res.json(productora)
