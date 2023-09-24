@@ -10,35 +10,35 @@ const createMedia= async (req = request, res = response) => {
         const datos = req.body
         console.log(datos)
         const { genero, director, productora, tipo } = datos;
-        // validando cliente
+        // validando genero
         const generoDB = Genero.findOne({
             _id: genero._id,
             estado: true
-        })// select * from clientes where _id=? and estado=true
+        })// select * from genero where _id=? and estado=true
         if(!generoDB){
             return res.status(400).json({msg: 'genero invalido'})
         }
-        // validando etapas
+        // validando director
         const directorDB = Director.findOne({
             _id: director._id,
             estado: true
-        })// select * from etapas where _id=? and estado=true
+        })// select * from director where _id=? and estado=true
         if(!directorDB){
            return res.status(400).json({msg: 'director invalido'})
         }
-        // validando tipo proyecto
+        // validando productora
         const productoraDB = Productora.findOne({
             _id: productora._id,
             estado: true
-        })// select * from tipoproyecto where _id=? and estado=true
+        })// select * from productora where _id=? and estado=true
         if(!productoraDB){
            return res.status(400).json({msg: 'productora invalido'})
         }
-        // validando universidad
+        // validando tipo
         const tipoDB = Tipo.findOne({
             _id: tipo._id,
             estado: true
-        })// select * from universidad where _id=? and estado=true
+        })// select * from tipo where _id=? and estado=true
         if(!tipoDB){
            return res.status(400).json({msg: 'universidad invalida'})
         }      
